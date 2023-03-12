@@ -187,6 +187,14 @@ function copyURL() {
   navigator.clipboard.writeText(step2_url.href);
 }
 
+function shareWhatsapp() {
+  window.open(encodeURI('https://wa.me/?text=' + step2_url.href), '_blank');
+}
+
+function shareTelegram() {
+  window.open(encodeURI('tg://msg?text=' + step2_url.href), '_blank');
+}
+
 // Step3
 step3_password.addEventListener('input', () => {
   step3_password_count.textContent = `${step3_password.value.length} / 100`
