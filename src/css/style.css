@@ -1,9 +1,46 @@
+:root,
+:root.light {
+  --color-body-bg: #fff;
+  --color-header: #000;
+  --color-h1: #000;
+  --color-h2: #212529;
+  --color-p: #212529;
+  --color-input: #000;
+  --color-input-bg: #fff;
+  --color-box: #000;
+  --color-box-bg: #E7E9EB;
+  --color-url: #0d6efd;
+  --color-icon: #12b584;
+}
+:root.dark {
+  --color-body-bg: #212529;
+  --color-header: #adb5db;
+  --color-h1: #fff;
+  --color-h2: #adb5db;
+  --color-p: #adb5db;
+  --color-input: #fff;
+  --color-input-bg: #212529;
+  --color-box: #fff;
+  --color-box-bg: #292e33;
+  --color-url: #6ea8fe;
+  --color-icon: #14c48f;
+}
+
 body {
-  background-color: #212529;
+  background-color: var(--color-body-bg);
+}
+h1 {
+  color: var(--color-h1);
 }
 h2 {
-  color: #adb5db;
+  color: var(--color-h2);
   font-size: 1.6rem;
+}
+p {
+  color: var(--color-p) !important;
+}
+hr {
+  border-top: 1px solid var(--color-p);
 }
 input {
   box-sizing: border-box;
@@ -11,8 +48,8 @@ input {
   border-radius: 5px !important;
   font-size: 16px !important;
   padding: 10px !important;
-  color: #fff !important;
-  background-color: #212529 !important;
+  color: var(--color-input) !important;
+  background-color: var(--color-input-bg) !important;
 }
 input:focus {
   outline: none;
@@ -27,13 +64,13 @@ input:not(:focus) {
 textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #131517;
+  border: 1px solid rgb(86, 92, 110);
   border-radius: 5px;
   font-size: 16px;
   line-height: 1.5;
-  color: #fff;
+  color: var(--color-input);
   resize: none;
-  background-color: #212529;
+  background-color: var(--color-input-bg)
 }
 textarea:focus {
   outline: none;
@@ -49,37 +86,47 @@ textarea::-webkit-scrollbar {
 textarea::-webkit-scrollbar-thumb {
   background-color: #ccc;
 }
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 10px 15px 15px 15px;
+  z-index: 2;
+  background-color: var(--color-body-bg);
+  color: var(--color-header);
+  border-bottom-left-radius: 5px;
+}
 .icon {
   padding: 1rem;
-  color: rgba(32,202,151, 1);
-  background-color: rgba(32,202,151, 0.1);
+  color: var(--color-icon);
+  background-color: rgba(32,202,151, 0.4);
   border-radius: 1rem;
-  mix-blend-mode: lighten;
 }
 .box {
-  border: 1px solid #292e33;
+  border: 1px solid var(--color-box-bg);
   border-radius: 5px;
   font-size: 16px;
   padding: 10px;
-  color: #fff;
-  background-color: #292e33;
+  color: var(--color-box);
+  background-color: var(--color-box-bg);
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.05);
+}
+#step2-url {
+  color: var(--color-url);
 }
 .head {
   width: 200px;
 }
 @media (min-width: 1024px) {
   .master-div {
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -25%);
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
     text-align: center !important;
-    width:1000px;
   }
   .head {
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
     width: 300px;
   }
 }

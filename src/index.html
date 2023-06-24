@@ -11,41 +11,47 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <span id="about-text" onclick="aboutClick()" style="position:fixed; top:0; right:0; padding:10px; cursor:pointer; color:#adb5db; padding:10px 15px 15px 15px">About</span>
-    <div class="master-div">
-      <div class="col-lg-7 mx-auto p-4" style="width:100%">
+    <div class="header">
+      <span id="theme-text" rel="preload" onclick="themeClick()" style="cursor:pointer">Light</span>
+      <span style="padding-left: 5px; padding-right: 5px;">|</span>
+      <span id="about-text" rel="preload" onclick="aboutClick()" style="cursor:pointer">About</span>
+    </div>
+    <div class="master-div" style="padding-top:3vh">
+      <div class="col-lg-7 mx-auto p-4" style="width:100%;">
         <div onclick="window.location.href = 'https://cryptex.ninja'" class="head" style="cursor: pointer">
           <div class="icon d-inline-block mb-3">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-shield-lock-fill" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm0 5a1.5 1.5 0 0 1 .5 2.915l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99A1.5 1.5 0 0 1 8 5z"/>
             </svg>
           </div>
-          <h1 class="display-5 mb-4 fw-semibold lh-sm" style="color:#fff">Cryptex.ninja</h1>
+          <h1 class="display-5 mb-4 fw-semibold lh-sm">Cryptex.ninja</h1>
         </div>
         <h2 class="fw-normal" style="margin:0">Lock down your data. Send it securely.</h2>
 
         <div id="about" class="p-4 box" style="margin-top:30px; display: none;">
-          <p style="color:#cbd3f3; font-size: 1.5rem; margin:0">About</p>
-          <hr style="border-top:1px solid #adb5db;">
-          <p style="color:#adb5db; text-align:left"><span style="font-weight:500">Cryptex.ninja</span> is a web application that provides secure messaging with end-to-end encryption.</p>
-          <p style="color:#adb5db; text-align:left">Our top priority is to ensure that your information remains secure and confidential. To achieve this, we employ strong encryption methods, such as AES-256 and SHA3-512, to protect your data from unauthorized access. Your information is encrypted on your device, meaning that only the intended recipient can access it with the correct password. This provides maximum security and privacy for your communication.</p>
-          <p style="color:#adb5db; text-align:left">In addition, Cryptex.ninja generates a unique web address when you share a message, which requires a password to access. This feature adds an extra layer of security to ensure that only authorized users can read your communication.</p>
-          <p style="color:#adb5db; text-align:left">Your messages will always remain private and confidential.</p>
+          <p style="font-size: 1.5rem; margin:0">About</p>
+          <hr>
+          <p style="text-align:left; text-align: justify; text-justify: inter-word;"><span style="font-weight:500">Cryptex.ninja</span> is a web application that provides secure messaging with end-to-end encryption.</p>
+          <p style="text-align:left; text-align: justify; text-justify: inter-word;">Our top priority is to ensure that your information remains secure and confidential. To achieve this, we employ strong encryption methods, such as AES-256 and SHA3-512, to protect your data from unauthorized access. Your information is encrypted on your device, meaning that only the intended recipient can access it with the correct password. This provides maximum security and privacy for your communication.</p>
+          <p style="text-align:left; text-align: justify; text-justify: inter-word;">In addition, Cryptex.ninja generates a unique web address when you share a message, which requires a password to access. This feature adds an extra layer of security to ensure that only authorized users can read your communication.</p>
+          <p style="text-align:left; text-align: justify; text-justify: inter-word;">Your messages will always remain private and confidential.</p>
 
-          <p style="color:#cbd3f3; font-size: 1.2rem; margin:0; margin-top:30px; margin-bottom:20px; text-align:left;">How it works under the hood</p>
-          <p style="color:#adb5db; text-align:left">All data stored in Cryptex, the message and password, is encrypted in the user's browser just before being sent to the Cryptex infrastructure. The message is encrypted using AES-256, and the password is encrypted using SHA3-512.</p>
-          <p style="color:#adb5db; text-align:left">When a user attempts to open a cryptex, they provide their password. This password is then encrypted using SHA3-512 in the user's browser and after that is sent to the Cryptex infrastructure. Then the backend compares the stored SHA3-512 password to the one provided by the user (which is also encrypted in SHA3-512). If the passwords match, Cryptex sends back the message (which is encrypted with AES-256), and the decryption process begins in the user's browser.</p>
-          <p style="color:#adb5db; text-align:left">All encryption and decryption occurs in the user's browser, and the server only receives already-encrypted data. Also, all data is transmitted in encrypted form.</p>
-          <p style="color:#adb5db; text-align:left">The infrastructure is build using AWS and consists of the following components:</p>
-          <p style="color:#adb5db; text-align:left">User's browser --> Cloudfront --> Api Gateway --> Lambda --> SQS</p>
-          <p style="color:#adb5db; text-align:left">Github: <a href="https://github.com/polius/cryptex" target="_blank" style="text-decoration:none;">https://github.com/polius/cryptex</a></p>
+          <p style="font-size: 1.2rem; margin:0; margin-top:30px; margin-bottom:20px; text-align:left; text-decoration: underline;">How it works under the hood</p>
+          <p style="text-align:left; text-align: justify; text-justify: inter-word;">All data stored in Cryptex, the message and password, is encrypted in the user's browser just before being sent to the Cryptex infrastructure. The message is encrypted using AES-256, and the password is encrypted using SHA3-512.</p>
+          <p style="text-align:left; text-align: justify; text-justify: inter-word;">When a user attempts to open a cryptex, they provide their password. This password is then encrypted using SHA3-512 in the user's browser and after that is sent to the Cryptex infrastructure. Then the backend compares the stored SHA3-512 password to the one provided by the user (which is also encrypted in SHA3-512). If the passwords match, Cryptex sends back the message (which is encrypted with AES-256), and the decryption process begins in the user's browser.</p>
+          <p style="text-align:left; text-align: justify; text-justify: inter-word;">All encryption and decryption occurs in the user's browser, and the server only receives already-encrypted data. Also, all data is transmitted in encrypted form.</p>
+
+          <p style="font-size: 1.2rem; margin:0; margin-top:30px; margin-bottom:20px; text-align:left; text-decoration: underline;">Infrastructure</p>
+          <p style="text-align:left; text-align: justify; text-justify: inter-word;">The infrastructure is build using AWS and consists of the following components:</p>
+          <p style="text-align:left; text-align: justify; text-justify: inter-word;">User's browser --> Cloudfront --> Api Gateway --> Lambda --> SQS</p>
+          <p style="text-align:left; text-align: justify; text-justify: inter-word;">Github: <a href="https://github.com/polius/cryptex" target="_blank" style="text-decoration:none;">https://github.com/polius/cryptex</a></p>
         </div>
 
         <div id="step1" class="p-4 box" style="margin-top:30px; display: none;">
-          <p style="color:#adb5db; text-align: left; margin-bottom:8px">Message</p>
+          <p style="text-align: left; margin-bottom:8px">Message</p>
           <textarea id="step1-message" rows="4"></textarea>
-          <p id="step1-message-count" style="text-align: right; color:#adb5db; margin-top:3px; margin-bottom:0px">0 / 1000</p>
-          <p style="color:#adb5db; text-align: left; margin-bottom:8px">Password</p>
+          <p id="step1-message-count" style="text-align: right; margin-top:3px; margin-bottom:0px">0 / 1000</p>
+          <p style="text-align: left; margin-bottom:8px">Password</p>
           <div class="input-group">
             <input class="form-control" id="step1-password" type="password" autocomplete="off" style="border-top-right-radius:0!important; border-bottom-right-radius:0!important">
             <button onclick="togglePassword1Visibility()" class="btn" type="button" style="background-color: #212529; color:#fff; border-color: rgb(86, 92, 110); margin-left:-1px; border-top-left-radius: 0; border-bottom-left-radius: 0">
@@ -59,7 +65,7 @@
               </svg>
             </button>
           </div>
-          <p id="step1-password-count" style="text-align: right; color:#adb5db; margin-top:3px; margin-bottom:5px">0 / 100</p>
+          <p id="step1-password-count" style="text-align: right; margin-top:3px; margin-bottom:5px">0 / 100</p>
           <button id="step1-button" type="button" onclick="step1_button_click()" class="btn btn-primary" style="padding:10px 30px 10px 30px">
             <span id="step1-button-loading" class="spinner-border spinner-border-sm" style="--bs-spinner-border-width: 0.1em; margin-right:5px; margin-top:2px; display:none" aria-hidden="true"></span>
             <svg id="step1-button-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rocket-takeoff-fill" viewBox="0 0 16 16" style="margin-bottom:3px; margin-right:5px">
@@ -75,8 +81,8 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#20ca97" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
           </svg>
-          <p style="color:#adb5db; font-size:20px; margin-top:15px; margin-bottom:20px">Here is your cryptex</p>
-          <p><a id="step2-url" href="" target="_blank" style="color:#6ea8fe; font-size: 20px; text-decoration: none;"></a></p>
+          <p style="font-size:20px; margin-top:15px; margin-bottom:20px">Here is your cryptex</p>
+          <p><a id="step2-url" href="" target="_blank" style="font-family: Consolas,monaco,monospace; font-size: 20px; text-decoration: none"></a></p>
           <button onclick="copyURL()" type="button" class="btn btn-primary" style="margin-top: 10px; padding:10px 30px 10px 30px">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-text-paragraph" viewBox="0 0 16 16" style="margin-bottom:2px; margin-right:5px">
               <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
@@ -97,8 +103,8 @@
         </div>
 
         <div id="step3" class="p-4 box" style="margin-top:30px; display: none;">
-          <p style="color:#adb5db; font-size:20px; margin-top:15px; margin-bottom:15px">Enter the password of this cryptex</p>
-          <p style="color:#adb5db; text-align: left; margin-bottom:8px">Password</p>
+          <p style="font-size:20px; margin-top:15px; margin-bottom:15px">Enter the password of this cryptex</p>
+          <p style="text-align: left; margin-bottom:8px">Password</p>
           <div class="input-group">
             <input class="form-control" id="step3-password" type="password" autocomplete="off" style="border-top-right-radius:0!important; border-bottom-right-radius:0!important">
             <button onclick="togglePassword3Visibility()" class="btn" type="button" style="background-color: #212529; color:#fff; border-color: rgb(86, 92, 110); margin-left:-1px; border-top-left-radius: 0; border-bottom-left-radius: 0">
@@ -112,7 +118,7 @@
               </svg>
             </button>
           </div>
-          <p id="step3-password-count" style="text-align: right; color:#adb5db; margin-top:3px; margin-bottom:0px">0 / 100</p>
+          <p id="step3-password-count" style="text-align: right; margin-top:3px; margin-bottom:0px">0 / 100</p>
           <button id="step3-button" type="button" onclick="step3_button_click()" class="btn btn-primary" style="padding:10px 30px 10px 30px">
             <span id="step3-button-loading" class="spinner-border spinner-border-sm" style="--bs-spinner-border-width: 0.1em; margin-right:5px; margin-top:2px; display:none" aria-hidden="true"></span>
             <svg id="step3-button-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rocket-takeoff-fill" viewBox="0 0 16 16" style="margin-bottom:3px; margin-right:5px">
@@ -128,10 +134,10 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#20ca97" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
           </svg>
-          <p style="color:#adb5db; font-size:20px; margin-top:15px; margin-bottom:15px">The cryptex has been unlocked</p>
-          <p style="color:#adb5db; text-align: left; margin-bottom:8px">Message</p>
+          <p style="font-size:20px; margin-top:15px; margin-bottom:15px">The cryptex has been unlocked</p>
+          <p style="text-align: left; margin-bottom:8px">Message</p>
           <textarea id="step4-message" readonly></textarea>
-          <p style="color:#adb5db; text-align: left; margin-top:10px; margin-bottom:8px">Expiration</p>
+          <p style="text-align: left; margin-top:10px; margin-bottom:8px">Expiration</p>
           <input readonly id="step4-expiration" type="text" style="margin-bottom: 1.6rem">
           <button onclick="copyMessage()" id="step4-button-copy" type="button" class="btn btn-primary" style="padding:10px 30px 10px 30px; margin-bottom:10px; margin-right:5px">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-text-paragraph" viewBox="0 0 16 16" style="margin-bottom:2px; margin-right:5px">
@@ -159,12 +165,12 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#20ca97" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
           </svg>
-          <p style="color:#adb5db; font-size:20px; margin-top:15px;">The cryptex has been destroyed</p>
+          <p style="font-size:20px; margin-top:15px;">The cryptex has been destroyed</p>
           <a href="/"><button type="button" class="btn btn-primary" style="margin-top:10px; padding:10px 30px 10px 30px">Create another cryptex</button></a>
         </div>
 
         <div id="footer" class="mx-auto pt-4 text-md-center" style="display: none;">
-          <p class="fw-normal" style="font-size:14px; color:#adb5db; margin:0;">The platform uses end-to-end encryption to ensure your data is protected from unauthorized access, and only authorized users can access the content.</p>
+          <p class="fw-normal" style="font-size:14px; margin:0;">The platform uses end-to-end encryption to ensure your data is protected from unauthorized access, and only authorized users can access the content.</p>
         </div>
       </div>
     </div>

@@ -12,6 +12,7 @@ const step3 = document.getElementById('step3');
 const step4 = document.getElementById('step4');
 const step5 = document.getElementById('step5');
 
+const theme_text = document.getElementById('theme-text');
 const about_text = document.getElementById('about-text');
 
 const step1_message = document.getElementById('step1-message');
@@ -46,6 +47,13 @@ const footer = document.getElementById('footer');
 
 // Check step
 window.addEventListener("load", () => {
+  // Load Theme
+  const mode = window.localStorage.getItem('mode')
+  if (mode == 'dark') {
+    document.documentElement.classList.remove("light")
+    document.documentElement.classList.add("dark")
+    theme_text.innerHTML = 'Dark'
+  }
   // Clean inputs and textareas
   step1_message.value = ''
   step1_password.value = ''
@@ -68,6 +76,22 @@ window.addEventListener("load", () => {
   footer.style.display = 'block'
 });
 
+// Theme
+function themeClick() {
+  if (theme_text.innerHTML == 'Dark') {
+    theme_text.innerHTML = 'Light'
+    document.documentElement.classList.remove("dark")
+    document.documentElement.classList.add("light")
+    window.localStorage.setItem('mode', 'light')
+  }
+  else if (theme_text.innerHTML == 'Light') {
+    theme_text.innerHTML = 'Dark'
+    document.documentElement.classList.remove("light")
+    document.documentElement.classList.add("dark")
+    window.localStorage.setItem('mode', 'dark')
+  }
+}
+
 // About
 function aboutClick() {
   if (about_text.innerHTML == 'About') {
@@ -75,7 +99,7 @@ function aboutClick() {
     previousStep = currentStep
     currentStep.style.display = 'none'
     about.style.display = 'block'
-    about_text.innerHTML = '← Go back'
+    about_text.innerHTML = 'Go back'
   }
   else {
     about.style.display = 'none'
@@ -88,13 +112,13 @@ function aboutClick() {
 step1_message.addEventListener('input', () => {
   step1_message_count.textContent = `${step1_message.value.length} / 1000`
   if (step1_message.value.length > 1000) step1_message_count.style.color = '#dc3545'
-  else step1_message_count.style.color = '#adb5db'
+  else step1_message_count.style.color = theme_text.innerHTML == 'Dark' ? '#adb5db' : '#212529'
 });
 
 step1_password.addEventListener('input', () => {
   step1_password_count.textContent = `${step1_password.value.length} / 100`
   if (step1_password.value.length > 100) step1_password_count.style.color = '#dc3545'
-  else step1_password_count.style.color = '#adb5db'
+  else step1_password_count.style.color = theme_text.innerHTML == 'Dark' ? '#adb5db' : '#212529'
 });
 
 step1_password.addEventListener("keydown", (e) => {
@@ -199,7 +223,7 @@ function shareTelegram() {
 step3_password.addEventListener('input', () => {
   step3_password_count.textContent = `${step3_password.value.length} / 100`
   if (step3_password.value.length > 100) step3_password_count.style.color = '#dc3545'
-  else step3_password_count.style.color = '#adb5db'
+  else step3_password_count.style.color = theme_text.innerHTML == 'Dark' ? '#adb5db' : '#212529'
 });
 
 step3_password.addEventListener("keydown", (e) => {
