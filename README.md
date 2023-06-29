@@ -4,11 +4,13 @@
 
 Cryptex.ninja is a web application that provides secure messaging with end-to-end encryption.
 
-Our top priority is to ensure that your information remains secure and confidential. To achieve this, we employ strong encryption methods, such as AES-256 and SHA3-512, to protect your data from unauthorized access. Your information is encrypted on your device, meaning that only the intended recipient can access it with the correct password. This provides maximum security and privacy for your communication.
+Ensuring the security and confidentiality of your information is a top priority. Cryptex.ninja employs robust encryption methods, including AES-256 and SHA3-512, to protect your data from unauthorized access.
 
-In addition, Cryptex.ninja generates a unique web address when you share a message, which requires a password to access. This feature adds an extra layer of security to ensure that only authorized users can read your communication.
+The encryption and decryption process takes place directly on your device, allowing only the intended recipient to access and decrypt the data using the provided password. This approach ensures maximum security and privacy for your communication.
 
-Your messages will always remain private and confidential.
+Furthermore, Cryptex.ninja generates a unique web address when a message is shared. To access the message, a password is required, adding an extra layer of security and ensuring that only authorized users can read your communication.
+
+Your messages will always remain private and confidential. Cryptex.ninja prioritizes stringent security measures to safeguard your information and respect your privacy.
 
 ### How it works under the hood
 

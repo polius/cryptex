@@ -10,7 +10,8 @@
   --color-box: #000;
   --color-box-bg: #E7E9EB;
   --color-url: #0d6efd;
-  --color-icon: #12b584;
+  --color-icon: #0f9d58;
+  --color-button-border: #cdcfd1;
 }
 :root.dark {
   --color-body-bg: #212529;
@@ -24,6 +25,7 @@
   --color-box-bg: #292e33;
   --color-url: #6ea8fe;
   --color-icon: #14c48f;
+  --color-button-border: #464f59;
 }
 
 body {

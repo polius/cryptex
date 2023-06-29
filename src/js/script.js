@@ -45,15 +45,12 @@ const step4_button_loading = document.getElementById('step4-button-loading');
 
 const footer = document.getElementById('footer');
 
-// Check step
+// Get theme mode
+const mode = window.localStorage.getItem('mode')
+if (mode == 'dark') theme_text.innerHTML = 'Dark'
+
+// Execute on page load
 window.addEventListener("load", () => {
-  // Load Theme
-  const mode = window.localStorage.getItem('mode')
-  if (mode == 'dark') {
-    document.documentElement.classList.remove("light")
-    document.documentElement.classList.add("dark")
-    theme_text.innerHTML = 'Dark'
-  }
   // Clean inputs and textareas
   step1_message.value = ''
   step1_password.value = ''

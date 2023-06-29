@@ -4,6 +4,8 @@ import json
 import time
 import uuid
 import boto3
+import string
+import random
 from datetime import datetime
 
 # Global variable to store the token buckets
@@ -24,12 +26,12 @@ def lambda_handler(event, context):
             'statusCode': 400,
             'body': "The request could not be understood or was missing required parameters.\n"
         }
-    
+
     # Get and validate the parameters from the request data
     body = json.loads(body)
     message = body.get('message')
-    retention = body.get('retention', 60)
     password = body.get('password')
+    retention = body.get('retention', 60)
     if not validate_message(message) or not validate_retention(retention) or not validate_password(password):
         return {
             'statusCode': 400,
@@ -39,19 +41,25 @@ def lambda_handler(event, context):
     # Parse retention
     expiration = parse_expiration(retention)
 
-    # Generate short uuid
-    chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-    id = ''.join(chars[x] for x in numberToBase(uuid.uuid4().int, len(chars)))
-
     # Calculate timestamp and expiration datetime
     timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
     # Create an SQS client
     sqs = boto3.client('sqs')
 
+    # Assign SQS tags
+    tags = {"password": password, "timestamp": timestamp, "retention": str(retention), "uuid": str(uuid.uuid4())}
+
     # Create a new SQS queue
-    tags = {"password": password, "timestamp": timestamp, "retention": str(retention)}
-    response = sqs.create_queue(QueueName=f"cryptex-{id}", Attributes={"MaximumMessageSize": "1024", "VisibilityTimeout": "0", "MessageRetentionPeriod": str(retention)}, tags=tags)
+    while True:
+        try:
+            id = generate_uuid()
+            response = sqs.create_queue(QueueName=f"cryptex-{id}", Attributes={"MaximumMessageSize": "1024", "VisibilityTimeout": "0", "MessageRetentionPeriod": str(retention)}, tags=tags)
+            break
+        except (sqs.exceptions.QueueNameExists, sqs.exceptions.QueueDeletedRecently):
+            # QueueNameExists: If the queue name, attributes or tags don't match with an existing queue.
+            # QueueDeletedRecently: The queue has been deleted with the last 60 seconds.
+            pass
 
     # Create a message in the SQS queue
     sqs.send_message(QueueUrl=response['QueueUrl'], MessageBody=f"{password}|{message.strip()}")
@@ -76,15 +84,9 @@ def check_ratelimits(event):
         token_buckets[sourceIp] = time.time()
     return True
 
-def numberToBase(n, b):
-    # Function to convert a number to a specified base.
-    if n == 0:
-        return [0]
-    digits = []
-    while n:
-        digits.append(int(n % b))
-        n //= b
-    return digits[::-1]
+def generate_uuid():
+    alphabet = string.ascii_lowercase + string.ascii_uppercase + string.digits
+    return ''.join(random.choices(alphabet, k=8))
 
 def validate_body(value):
     try:
