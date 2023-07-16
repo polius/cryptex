@@ -123,8 +123,8 @@ step1_password.addEventListener('input', () => {
   else step1_password_count.style.color = theme_text.innerHTML == 'Dark' ? '#adb5db' : '#212529'
 });
 
-step1_password.addEventListener("keydown", (e) => {
-  if (e.code === "Enter") step1_button_click()
+step1_password.addEventListener("keydown", (event) => {
+  if (event.key === 'Enter' || event.key === 'NumpadEnter') step1_button_click()
 });
 
 function togglePassword1Visibility() {
@@ -231,8 +231,8 @@ step3_password.addEventListener('input', () => {
   else step3_password_count.style.color = theme_text.innerHTML == 'Dark' ? '#adb5db' : '#212529'
 });
 
-step3_password.addEventListener("keydown", (e) => {
-  if (e.code === "Enter") step3_button_click()
+step3_password.addEventListener("keydown", (event) => {
+  if (event.key === 'Enter' || event.key === 'NumpadEnter') step3_button_click()
 });
 
 function togglePassword3Visibility() {
