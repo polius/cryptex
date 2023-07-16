@@ -1,6 +1,9 @@
 // Apply autosize in all textarea components
 autosize(document.querySelectorAll('textarea'));
 
+// Get the search parameters from the current URL
+const urlParams = new URLSearchParams(window.location.search);
+
 // Store previous step (for about)
 var previousStep = null
 
@@ -25,7 +28,7 @@ const step1_button_icon = document.getElementById('step1-button-icon');
 const step1_button_loading = document.getElementById('step1-button-loading');
 
 const step2_url = document.getElementById('step2-url')
-const step2_message = document.getElementById('step2-message')
+const step2_copy_url = document.getElementById('step2-copy-url')
 
 const step3_password = document.getElementById('step3-password');
 const step3_password_count = document.getElementById('step3-password-count');
@@ -37,9 +40,10 @@ const step3_error = document.getElementById('step3-error');
 const step4_message = document.getElementById('step4-message');
 const step4_expiration = document.getElementById('step4-expiration');
 const step4_button_copy = document.getElementById('step4-button-copy');
+const step4_copy_message = document.getElementById('step4-copy-message');
 const step4_button_delete = document.getElementById('step4-button-delete');
 const step4_button_delete_confirm = document.getElementById('step4-button-delete-confirm');
-const step4_message_2 = document.getElementById('step4-message-2');
+const step4_message_error = document.getElementById('step4-message-error');
 const step4_button_icon = document.getElementById('step4-button-icon');
 const step4_button_loading = document.getElementById('step4-button-loading');
 
@@ -52,9 +56,10 @@ if (mode == 'dark') theme_text.innerHTML = 'Dark'
 // Execute on page load
 window.addEventListener("load", () => {
   // Clean inputs and textareas
-  step1_message.value = ''
+  step1_message.value = urlParams.get('m') == null ? '' : urlParams.get('m')
   step1_password.value = ''
   step3_password.value = ''
+
   // Add fade-in effect and focus the current input
   const element = window.location.pathname != '/' ? step3 : step1
   const element_focus = window.location.pathname != '/' ? step3_password : step1_message
@@ -204,8 +209,11 @@ function step1_button_click() {
 
 // Step2
 function copyURL() {
-  step2_message.style.display = 'block'
   navigator.clipboard.writeText(step2_url.href);
+  step2_copy_url.innerHTML = 'URL Copied!'
+  setTimeout(() => {
+    step2_copy_url.innerHTML = 'Copy URL'
+  }, 1000)
 }
 
 function shareWhatsapp() {
@@ -302,8 +310,11 @@ function step3_button_click() {
 }
 // Step 4
 function copyMessage() {
-  step4_message_2.style.display = 'block'
   navigator.clipboard.writeText(step4_message.value);
+  step4_copy_message.innerHTML = 'Message Copied!'
+  setTimeout(() => {
+    step4_copy_message.innerHTML = 'Copy Message'
+  }, 1000)
 }
 function deleteCryptex() {
   step4_button_delete.style.display = 'none'
@@ -332,12 +343,11 @@ function deleteCryptexConfirm() {
   .then(() => {
     step4.style.display = 'none';
     step5.style.display = 'block';
-    step4_message_2.style.display = 'none';
+    step4_message_error.style.display = 'none';
   })
   .catch((error) => {
-    step4_message_2.innerHTML = error.message
-    step4_message_2.style.display = 'block';
-    step4_message_2.style.color = '#dc3545'
+    step4_message_error.innerHTML = error.message
+    step4_message_error.style.display = 'block';
   })
   .finally(() => {
     step4_button_delete_confirm.disabled = false;
