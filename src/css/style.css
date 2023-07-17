@@ -30,6 +30,7 @@
 
 body {
   background-color: var(--color-body-bg);
+  font-family: Lato,sans-serif;
 }
 h1 {
   color: var(--color-h1);
