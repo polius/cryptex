@@ -51,7 +51,25 @@
 
           <p style="font-size: 1.2rem; margin:0; margin-top:30px; margin-bottom:20px; font-weight:600; text-align:left">Infrastructure</p>
           <p style="text-align:left; text-align: justify; text-justify: inter-word;">The infrastructure is build using AWS and consists of the following components:</p>
-          <p style="text-align:left; text-align: justify; text-justify: inter-word;">User's browser --> Cloudfront --> Api Gateway --> Lambda --> SQS</p>
+          <p style="font-size: 0.9rem; margin:0; margin-top:15px; margin-bottom:15px; font-weight:600; text-align:left">Website (cryptex.ninja)</p>
+          <p style="text-align:left; text-align: justify; text-justify: inter-word;">User's browser → Cloudflare (DDOS Protection + CDN) → Cloudfront → S3</p>
+          <p style="font-size: 0.9rem; margin:0; margin-top:15px; margin-bottom:15px; font-weight:600; text-align:left">API (api.cryptex.ninja)</p>
+          <p style="text-align:left; text-align: justify; text-justify: inter-word;">User's browser → Cloudflare (DDOS Protection + Rate Limits) → Api Gateway → Lambda → DynamoDB</p>
+
+          <p style="font-size: 1.2rem; margin:0; margin-top:30px; margin-bottom:20px; font-weight:600; text-align:left">API Reference</p>
+          <p style="text-align:left; text-align: justify; text-justify: inter-word;">These are the different API calls that Cryptex supports:</p>
+          <p style="font-size: 0.9rem; margin:0; margin-top:10px; margin-bottom:15px; font-weight:600; text-align:left">Encrypt</p>
+          <div style="border: 1px solid var(--color-p); padding:10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); overflow: auto; margin: 0 auto;">
+            <p style="margin:0; text-align: left; font-family: Consolas,monaco,monospace">curl -X POST https://api.cryptex.ninja/encrypt -H "Content-Type: application/json" -d '{"message": "Hello World!", "password": "super_secret"}'</p>
+          </div>
+          <p style="font-size: 0.9rem; margin:0; margin-top:15px; margin-bottom:15px; font-weight:600; text-align:left">Decrypt</p>
+          <div style="border: 1px solid var(--color-p); padding:10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); overflow: auto; margin: 0 auto;">
+            <p style="margin:0; text-align: left; font-family: Consolas,monaco,monospace">curl -X POST https://api.cryptex.ninja/decrypt -H "Content-Type: application/json" -d '{"id": "xxx-xxxx-xxx", "password": "super_secret"}'</p>
+          </div>
+          <p style="font-size: 0.9rem; margin:0; margin-top:15px; margin-bottom:15px; font-weight:600; text-align:left">Destroy</p>
+          <div style="border: 1px solid var(--color-p); padding:10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); overflow: auto; margin: 0 auto;">
+            <p style="margin:0; text-align: left; font-family: Consolas,monaco,monospace">curl -X POST https://api.cryptex.ninja/destroy -H "Content-Type: application/json" -d '{"id": "xxx-xxxx-xxx", "password": "super_secret"}'</p>
+          </div>
 
           <p style="text-align:left; text-align: justify; text-justify: inter-word; margin-top:30px; margin-bottom:10px">Released under the MIT License.</p>
           <p style="text-align:left; text-align: justify; text-justify: inter-word; margin:0"><a href="https://github.com/polius/cryptex" target="_blank" style="text-decoration:none;">https://github.com/polius/cryptex</a></p>
@@ -143,7 +161,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#20ca97" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
           </svg>
-          <p style="font-size:18px; font-weight:500; margin-top:15px; margin-bottom:15px">The cryptex has been unlocked</p>
+          <p style="font-size:18px; font-weight:500; margin-top:15px; margin-bottom:15px">The cryptex has been unlocked!</p>
           <p style="text-align: left; margin-bottom:8px">Message</p>
           <textarea id="step4-message" readonly></textarea>
           <p style="text-align: left; margin-top:10px; margin-bottom:8px">Expiration</p>

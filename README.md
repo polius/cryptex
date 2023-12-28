@@ -20,6 +20,42 @@ When a user attempts to open a cryptex, they provide their password. This passwo
 
 All encryption and decryption occurs in the user's browser, and the server only receives already-encrypted data. Also, all data is transmitted in encrypted form.
 
+### Infrastructure
+
 The infrastructure is build using AWS and consists of the following components:
 
-User's browser --> Cloudfront --> Api Gateway --> Lambda --> SQS
+**Website (cryptex.ninja)**
+
+```
+User's browser → Cloudflare (DDOS Protection + CDN) → Cloudfront → S3
+```
+
+**API (api.cryptex.ninja)**
+
+```
+User's browser → Cloudflare (DDOS Protection + Rate Limits) → Api Gateway → Lambda → DynamoDB
+```
+
+### API Reference
+
+These are the different API calls that Cryptex supports:
+
+**Encrypt**
+
+```
+curl -X POST https://api.cryptex.ninja/encrypt -H "Content-Type: application/json" -d '{"message": "Hello World!", "password": "super_secret"}'
+```
+
+**Decrypt**
+
+```
+curl -X POST https://api.cryptex.ninja/decrypt -H "Content-Type: application/json" -d '{"id": "xxx-xxxx-xxx", "password": "super_secret"}'
+```
+
+**Destroy**
+
+```
+curl -X POST https://api.cryptex.ninja/destroy -H "Content-Type: application/json" -d '{"id": "xxx-xxxx-xxx", "password": "super_secret"}'
+```
+
+Released under the MIT License.

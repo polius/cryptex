@@ -337,7 +337,7 @@ function deleteCryptexConfirm() {
     }),
   })
   .then((response) => {
-    if (response.ok) return response.json()
+    if (response.ok) return response.text()
     return response.text().then(text => { throw new Error(text) });
   })
   .then(() => {
